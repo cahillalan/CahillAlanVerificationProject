@@ -732,6 +732,25 @@ public class CahillAlanTestTask2 {
         assertEquals(nineteen, rate);
 
     }
+    @Test
+    public void test44() {
+
+        BigDecimal normal = BigDecimal.valueOf(5);
+        BigDecimal reduced = BigDecimal.valueOf(2);
+        ArrayList<Period> reducedp = new ArrayList<>();
+        reducedp.add(new Period(2, 5));
+        ArrayList<Period> normalp = new ArrayList<>();
+        normalp.add(new Period(5, 24));
+
+        Rate myrate = new Rate(CarParkKind.STAFF, normal, reduced, reducedp, normalp);
+
+        Period myperiod = new Period(2, 10);
+        BigDecimal rate = myrate.calculate(myperiod);
+
+        BigDecimal sixteen = BigDecimal.valueOf(16);
+        assertEquals(sixteen, rate);
+
+    }
 
 }
 
