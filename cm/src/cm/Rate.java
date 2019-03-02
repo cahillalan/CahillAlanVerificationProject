@@ -1,5 +1,6 @@
-
+package cm;
 import java.math.BigDecimal;
+import java.text.Bidi;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,8 +94,63 @@ public class Rate {
     public BigDecimal calculate(Period periodStay) {
         int normalRateHours = periodStay.occurences(normal);
         int reducedRateHours = periodStay.occurences(reduced);
-        return (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
-                this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
-    }
+        BigDecimal normalrate = new BigDecimal(0);
+        BigDecimal lowerrate = new BigDecimal(0);
+        normalrate = this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours));
+        lowerrate = this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours));
+        //STUDEN MANAGEMENT VISITOR
+        BigDecimal finalrate = new BigDecimal(0);
+        finalrate = normalrate.add(lowerrate);
+        if (this.kind == CarParkKind.STAFF){
+            BigDecimal sixteen = new BigDecimal(16);
+            int check = sixteen.compareTo(finalrate);
+            if (check == 1){
+            }
+            else{
+                finalrate = sixteen;
 
+            }
+        }
+        else if (this.kind == CarParkKind.STUDENT){
+            BigDecimal fivefifty = new BigDecimal(5.50);
+            int check = finalrate.compareTo(fivefifty);
+            if (check == 1){
+                BigDecimal remainder = new BigDecimal(0);
+                remainder = finalrate.subtract(fivefifty);
+                BigDecimal division = new BigDecimal(4);
+                division = remainder.divide(division);
+                remainder = remainder.subtract(division);
+                finalrate = fivefifty.add(remainder);
+            }
+
+        }
+        else if (this.kind == CarParkKind.MANAGEMENT){
+            BigDecimal three = new BigDecimal(3);
+            int check = three.compareTo(finalrate);
+
+                if (check == 1)
+                {
+                    finalrate = three;
+                }
+            }
+
+        else {
+            BigDecimal eight = new BigDecimal(8);
+            BigDecimal result = new BigDecimal(0);
+            int check = eight.compareTo(finalrate);
+            if (check == 1|| check == 1 ){
+                finalrate = result ;
+            }
+            else{
+                result = finalrate.subtract(eight);
+                eight = new BigDecimal(2);
+                result = result.divide(eight);
+                finalrate = result;
+
+            }
+
+
+        }
+        return finalrate;
+    }
 }

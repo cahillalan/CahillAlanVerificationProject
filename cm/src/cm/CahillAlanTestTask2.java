@@ -1,3 +1,4 @@
+package cm;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -639,13 +640,13 @@ public class CahillAlanTestTask2 {
         BigDecimal normal = BigDecimal.valueOf(5);
         BigDecimal reduced = BigDecimal.valueOf(2);
         ArrayList<Period> reducedp = new ArrayList<>();
-        reducedp.add(new Period(2, 5));
+        reducedp.add(new Period(2, 6));
         ArrayList<Period> normalp = new ArrayList<>();
-        normalp.add(new Period(5, 24));
+        normalp.add(new Period(6, 24));
 
         Rate myrate = new Rate(CarParkKind.VISITOR, normal, reduced, reducedp, normalp);
 
-        Period myperiod = new Period(2, 7);
+        Period myperiod = new Period(2, 6);
         BigDecimal rate = myrate.calculate(myperiod);
 
         BigDecimal zero = BigDecimal.valueOf(0);
@@ -659,13 +660,13 @@ public class CahillAlanTestTask2 {
         BigDecimal normal = BigDecimal.valueOf(5);
         BigDecimal reduced = BigDecimal.valueOf(2);
         ArrayList<Period> reducedp = new ArrayList<>();
-        reducedp.add(new Period(2, 5));
+        reducedp.add(new Period(2, 6));
         ArrayList<Period> normalp = new ArrayList<>();
-        normalp.add(new Period(5, 24));
+        normalp.add(new Period(6, 24));
 
         Rate myrate = new Rate(CarParkKind.VISITOR, normal, reduced, reducedp, normalp);
 
-        Period myperiod = new Period(2, 11);
+        Period myperiod = new Period(2, 8);
         BigDecimal rate = myrate.calculate(myperiod);
 
         BigDecimal five = BigDecimal.valueOf(5);
@@ -728,7 +729,7 @@ public class CahillAlanTestTask2 {
         Period myperiod = new Period(2, 10);
         BigDecimal rate = myrate.calculate(myperiod);
 
-        BigDecimal nineteen = BigDecimal.valueOf(19.125);
+        BigDecimal nineteen = BigDecimal.valueOf(24.625);
         assertEquals(nineteen, rate);
 
     }
